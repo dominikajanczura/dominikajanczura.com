@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Verdana', sans-serif;
+    font-family: 'Aptos', sans-serif;
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.8;
@@ -92,10 +92,9 @@ section {
 
 section h2 {
     font-size: 32px;
-    color: #00264d;
     margin-bottom: 20px;
     text-align: center;
-    letter-spacing: 3px;
+    letter-spacing: 7px;
 }
 
 section h3 {
@@ -105,7 +104,19 @@ section h3 {
     letter-spacing: 1px;
 }
 
-.section.about,
+.section.about{
+    p {
+        text-align: justify;
+        margin-bottom: 1.5em;
+        line-height: 1.6;
+    }
+
+    #certs{
+        text-align: center;
+    }
+
+}
+
 .section.contact {
     text-align: center;
 }
@@ -251,4 +262,40 @@ footer a:hover {
         margin-bottom: 20px;
     }
 }
+
+
+.button-container {
+    position: fixed;
+    top: 5%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 999999;
+}
+
+button {
+    opacity: 0.4;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+    width: 30px;
+}
+
+.polska {
+    background: linear-gradient(to bottom, #ffffff 50%, #dc143c 50%);
+}
+
+.ukraina {
+    background: linear-gradient(to bottom, #005bbb 50%, #ffd700 50%);
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
 

@@ -47,8 +47,35 @@
         }
     </script>
 
+    <script>
+        let originalContent = null;
+
+        function loadContent(language) {
+            if (originalContent === null) {
+                originalContent = document.body.innerHTML;
+            }
+            if (language === "pl") {
+                document.body.innerHTML = originalContent;
+                console.log(originalContent);
+                console.log("done");
+            } else {
+                fetch('js/content.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.body.innerHTML = data[language].body;
+                    })
+                    .catch(error => {
+                        console.error('Błąd podczas ładowania pliku JSON:', error);
+                    });
+            }
+        }
+    </script>
 </head>
 <body>
+<div class="button-container">
+    <button class="polska" onclick="loadContent('pl')"></button>
+    <button class="ukraina" onclick="loadContent('uk')"></button>
+</div>
 <h1>Dominika Janczura – Tłumacz Przysięgły Języka Ukraińskiego</h1>
 <a href="https://www.facebook.com/share/Vm6c9TEiH2X2r9ac/?mibextid=LQQJ4d" target="_blank" class="header-link"
    rel="noopener noreferrer">
@@ -86,7 +113,7 @@
         <p>
             Stale poszerzam swoją wiedzę, biorąc udział <b>w specjalistycznych kursach dla tłumaczy</b>
         </p>
-        <p>
+        <p id="certs">
             <a href="pdf/CERTYFIKAT1.pdf" target="_blank">
                 <img class="cert-image" src="img/c1.webp"
                      alt="Certyfikat uczestnictwa - 4xT - Tepis tłumaczy Tłumaczkom i Tłumaczom" loading="lazy">
@@ -121,13 +148,12 @@
             <div class="card">
                 <h3>Tłumaczenia uwierzytelnione pisemne:</h3>
                 <ul>
-                    <li>dokumentów tożsamości</li>
-                    <li>aktów stanu cywilnego</li>
-                    <li>aktów notarialnych i umów</li>
-                    <li>dokumentów, potwierdzających wykształcenie lub doświadczenie zawodowe</li>
-                    <li>zaświadczeń lekarskich</li>
-                    <li>certyfikatów</li>
-                    <li>zeznań podatkowych</li>
+                    <li>dokumentów tożsamości,</li>
+                    <li>aktów stanu cywilnego,</li>
+                    <li>aktów notarialnych, zeznań podatkowych, pełnomocnictw, zaświadczeń o niekaralności, umów,</li>
+                    <li>dokumentów, potwierdzających wykształcenie i doświadczenie zawodowe,</li>
+                    <li>orzeczeń sądowych, zaświadczeń z konsulatów,</li>
+                    <li>dokumentów pojazdów (dowodów rejestracyjnych, umów kupna-sprzedaży) i wielu innych.</li>
                 </ul>
             </div>
             <div class="card">
@@ -140,6 +166,14 @@
             </div>
             <div class="card">
                 <h3>Tłumaczenia zwykłe</h3>
+                <ul>
+                    <li>teksty handlowe i reklamowe,</li>
+                    <li>teksty i artykuły prasowe,</li>
+                    <li>instrukcje obsługi,</li>
+                    <li>regulaminy,</li>
+                    <li>teksty literackie
+                        i wiele innych.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -149,8 +183,8 @@
 <section class="section contact">
     <div class="section-content">
         <h2>Kontakt</h2>
-        <p>Dominika Janczura</p>
-        <p>Tłumacz przysięgły języka ukraińskiego</p>
+        <p><b>Dominika Janczura</b></p>
+        <p><b>Tłumacz przysięgły języka ukraińskiego</b></p>
         <p><a href="https://g.co/kgs/xcV72M7" rel="nofollow"> ul. Polna 2C, 64-426 Łowyń</a></p>
         <p><strong>Tel.</strong> <span id="contact-phone">+48 731 911 709</span></p>
         <p><strong>Email:</strong> <a href="mailto:ukrainski.miedzychod@gmail.com" id="contact-email">ukrainski.miedzychod@gmail.com</a>
@@ -169,6 +203,5 @@
     <p>© Copyright Dominika Janczura 2024 Tłumacz Języka Ukraińskiego</p>
     <p>Created by <a href="https://janczura.dev/" rel="noopener noreferrer">janczura.dev</a></p>
 </footer>
-
 </body>
 </html>
